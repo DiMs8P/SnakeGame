@@ -110,7 +110,7 @@ def train():
     record = 0
     agent = Agent()
     game = SnakeGameAI()
-    while True:
+    while agent.n_games < 100:
         # get old state
         state_old = agent.get_state(game)
 
@@ -144,8 +144,10 @@ def train():
             total_score += score
             mean_score = total_score / agent.n_games
             plot_mean_scores.append(mean_score)
-            plot(plot_scores, plot_mean_scores)
-            losses_plot(plot_losses)
+
+    plot(plot_scores, plot_mean_scores)
+    losses_plot(plot_losses)
+    print(plot_mean_scores[-1])
 
 
 if __name__ == '__main__':
